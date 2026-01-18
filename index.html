@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Portal de Ventas | Call Center</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <section id="login-screen" class="active">
+            <div class="login-card">
+                <h1>Portal de ventas</h1>
+                <input type="text" id="username" placeholder="Usuario (Ej: ASESOR01)">
+                <button class="btn btn-primary" id="btnLogin">Consultar Ventas</button>
+            </div>
+        </section>
+
+        <main id="main-dashboard" style="display: none;">
+            <header>
+                
+                <div class="user-info">
+                    <h2 id="displayNombre">Asesor: ---</h2>
+                    <p id="fechaHoy"></p>
+                </div>
+                
+                <button class="btn btn-export" id="btnExport">📥 Exportar Excel</button>
+            </header>
+
+            <div class="admin-zone">
+                <label><strong>Actualizar Base (Formador):</strong></label>
+                <input type="file" id="uploadExcel" accept=".xlsx, .xls">
+            </div>
+
+            <div class="summary-grid">
+                <div class="stat-card"><span>🆗Meta del dia</span><strong id="countPower">0</strong></div>
+                <div class="stat-card"><span>✔️Ventas Power</span><strong id="countPower">0</strong></div>
+                <div class="stat-card"><span>✔️Ventas Conectadas</span><strong id="countConectadas">0</strong></div>
+                <div class="stat-card"><span>Total</span><strong id="countTotal">0</strong></div>
+            </div>
+
+            <div class="table-container">
+                <table id="ventasTable">
+                    <thead>
+                        <tr>
+                            <th>Nombre asesor</th>
+                            <th>Hora</th>
+                            <th>Plan</th>
+                            <th>Canal</th>
+                            <th>Tipo</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaVentas"></tbody>
+                </table>
+            </div>
+            
+
+<header>
+    
+    <div class="header-actions">
+        <button class="btn btn-logout" id="btnLogout">🚪 Cerrar Sesión</button>
+    </div>
+</header>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
