@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Portal de Ventas | Call Center</title>
+    <title>Portal de Ventas | Migración</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </head>
@@ -10,7 +10,7 @@
     <div class="app-container">
         <section id="login-screen" class="active">
             <div class="login-card">
-                <h1>Portal de ventas</h1>
+                <h1>Portal de ventas Migración</h1>
                 <input type="text" id="username" placeholder="Usuario (Ej: ASESOR01)">
                 <button class="btn btn-primary" id="btnLogin">Consultar Ventas</button>
             </div>
@@ -20,12 +20,33 @@
             <header>
                 
                 <div class="user-info">
-                    <h2 id="displayNombre">Asesor: ---</h2>
-                    <p id="fechaHoy"></p>
+                    <img src="logo.png" alt="Logo" class="logo-small">
+                    <div class="user-info">
+                        
+                        <h2 id="displayNombre">Asesor: ---</h2>
+                        
+                        <h3 id="displayNombre">Supervisor: ---</h3>
+                        
+                        
+                        <p id="fechaHoy"></p>
                 </div>
                 
-                <button class="btn btn-export" id="btnExport">📥 Exportar Excel</button>
+                <div class="header">
+                    <button class="btn-export" id="btnExport">📥 Exportar Excel</button>
+                    <button class="btn-logout" id="btnLogout">Cerrar Sesión 🚪</button>
+                </div>
+               
             </header>
+
+            <div class="meta-container">
+                <div class="meta-info">
+                    <span>Meta del Mes: <strong id="metaMensual">3875</strong></span>
+                    <span>Faltan para la meta: <strong id="faltanteMeta">100</strong></span>
+                </div>
+                <div class="progress-bar">
+                    <div id="progressFill" class="progress-fill"></div>
+                </div>
+            </div>
 
             <div class="admin-zone">
                 <label><strong>Actualizar Base (Formador):</strong></label>
@@ -56,12 +77,7 @@
             </div>
             
 
-<header>
-    
-    <div class="header-actions">
-        <button class="btn btn-logout" id="btnLogout">🚪 Cerrar Sesión</button>
-    </div>
-</header>
+
         </main>
     </div>
     <script src="script.js"></script>

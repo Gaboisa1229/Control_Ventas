@@ -46,24 +46,78 @@ td { padding: 10px; border-bottom: 1px solid #ff0606; }
     margin-right: 15px;
 }
 
-.header-left {
+.header{
     display: flex;
-    align-items: center;
+    
+    
+    
 }
 
 /* Botón Cerrar Sesión */
-.btn-logout {
-    background-color: #e0e0e0;
-    color: var(--gris-oscuro);
-    margin-left: 10px;
+.btn-logout{
+    background: var(--gris-oscuro);
+    color: rgb(250, 248, 248);
+    margin-left: 600px;
+    text-align: left;
+    padding: 10px;
+    color: white;
+    border: 2px solid var(--rojo-oscuro);
+    transition: all 0.3s;
+
+           
 }
 
 .btn-logout:hover {
-    background-color: #d0d0d0;
+    background-color: var(--rojo-oscuro);
+    transform: scale(1.05);
+}
+
+/* Botón Exportar excel */
+.btn-export {
+    background: var(--verde);
+    color: rgb(250, 248, 248);
+    margin-right: 100px;
+    text-align: right;
+    padding: 10px;
+    
+}
+
+/* al seleccionar el Botón Cerrar sesion cambie de color */
+.btn-logout:hover {
+    background-color: #797676;
 }
 
 /* Ajuste para que el header se vea ordenado */
 .header-actions {
     display: flex;
     gap: 10px;
+}
+
+/* Diseño de la Meta Mensual */
+.meta-container {
+    background: var(--gris-oscuro);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.meta-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    background: #444;
+    height: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    background: var(--rojo-oscuro);
+    width: 0%; /* Cambiará con JS */
+    height: 100%;
+    transition: width 0.5s ease-in-out;
 }

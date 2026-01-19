@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputExcel = document.getElementById('uploadExcel');
     const loginScreen = document.getElementById('login-screen');
     const mainDashboard = document.getElementById('main-dashboard');
+    const btnLogout = document.getElementById('btnLogout');
+
 
     // 1. FUNCIÓN DE LOGIN
     btnLogin.addEventListener('click', () => {
@@ -93,3 +95,59 @@ document.addEventListener('DOMContentLoaded', () => {
         XLSX.writeFile(wb, `Ventas_${asesorLogueado}.xlsx`);
     });
 });
+
+// 5. FUNCIÓN CERRAR SESIÓN
+btnLogout.addEventListener('click', () => {
+    if(confirm("¿Estás seguro de que deseas cerrar sesión?")) {
+        // Limpiar el nombre y los datos
+        asesorLogueado = "";
+        datosGlobales = [];
+        document.getElementById('username').value = "";
+        
+        // Cambiar vistas
+        mainDashboard.style.display = 'none';
+        loginScreen.style.display = 'block';
+        loginScreen.classList.add('active');
+        
+        // Limpiar tabla y contadores
+        document.getElementById('username').value = "";
+        document.getElementById('listaVentas').innerHTML = "";
+        document.getElementById('countPower').innerText = "0";
+        document.getElementById('countConectadas').innerText = "0";
+        document.getElementById('countTotal').innerText = "0";
+        document.getElementById('progressFill').style.width = "0%";
+
+        // 4. Redirección visual a la página de Login
+        document.getElementById('main-dashboard').style.display = 'none';
+        const loginScreen = document.getElementById('login-screen');
+        loginScreen.style.display = 'block';
+        loginScreen.classList.add('active');
+
+        console.log("Sesión cerrada correctamente.");
+    }
+});
+
+// Al inicio de tu script.js define la meta
+const META_DEL_MES = 100; 
+
+// Dentro de la función renderizarDatos(), al final, agrega esto:
+function actualizarMeta(totalVentasActuales) {
+    const metaDisplay = document.getElementById('metaMensual');
+    const faltanteDisplay = document.getElementById('faltanteMeta');
+    const barra = document.getElementById('progressFill');
+
+    metaDisplay.innerText = META_DEL_MES;
+    
+    // Calcular faltante (mínimo 0, para que no dé números negativos)
+    const faltante = Math.max(0, META_DEL_MES - totalVentasActuales);
+    faltanteDisplay.innerText = faltante;
+
+    // Calcular porcentaje para la barra
+    const porcentaje = Math.min(100, (totalVentasActuales / META_DEL_MES) * 100);
+    barra.style.width = porcentaje + "%";
+
+    // Si llega a la meta, podrías cambiar el color de la barra
+    if (porcentaje === 100) {
+        barra.style.background = "#27ae60"; // Verde éxito
+    }
+}
